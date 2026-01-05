@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfographLM - Infographic Creation Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Landing Page -->
+        <div id="landing-page" class="page active">
+            <header class="app-header">
+                <h1>📊 InfographLM</h1>
+                <p class="subtitle">Create beautiful infographics from any content</p>
+            </header>
+            
+            <div class="container">
+                <div class="action-bar">
+                    <button id="new-notebook-btn" class="btn btn-primary">
+                        <span class="icon">➕</span>
+                        New Notebook
+                    </button>
+                </div>
+                
+                <div id="notebooks-grid" class="notebooks-grid">
+                    <!-- Notebooks will be dynamically loaded here -->
+                </div>
+                
+                <div id="empty-state" class="empty-state">
+                    <div class="empty-icon">📓</div>
+                    <h2>No notebooks yet</h2>
+                    <p>Create your first notebook to get started</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Notebook View/Editor Page -->
+        <div id="notebook-page" class="page">
+            <header class="app-header">
+                <button id="back-btn" class="btn btn-secondary">
+                    <span class="icon">←</span>
+                    Back
+                </button>
+                <h1 id="notebook-title">Notebook</h1>
+                <button id="delete-notebook-btn" class="btn btn-danger">
+                    <span class="icon">🗑️</span>
+                    Delete
+                </button>
+            </header>
+            
+            <div class="container">
+                <div class="notebook-container">
+                    <!-- Input Section -->
+                    <div class="input-section">
+                        <h2>Add Content Source</h2>
+                        
+                        <div class="input-tabs">
+                            <button class="tab-btn active" data-tab="text">Text</button>
+                            <button class="tab-btn" data-tab="youtube">YouTube</button>
+                            <button class="tab-btn" data-tab="url">URL</button>
+                        </div>
+                        
+                        <div class="tab-content active" id="text-tab">
+                            <textarea id="text-input" placeholder="Enter your text here..." rows="6"></textarea>
+                            <button id="add-text-btn" class="btn btn-primary">Add Text</button>
+                        </div>
+                        
+                        <div class="tab-content" id="youtube-tab">
+                            <input type="text" id="youtube-input" placeholder="Enter YouTube video URL">
+                            <button id="add-youtube-btn" class="btn btn-primary">Add YouTube Video</button>
+                            <p class="help-text">We'll extract the transcript from the video</p>
+                        </div>
+                        
+                        <div class="tab-content" id="url-tab">
+                            <input type="text" id="url-input" placeholder="Enter webpage URL">
+                            <button id="add-url-btn" class="btn btn-primary">Add URL Content</button>
+                            <p class="help-text">We'll extract the text content from the page</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Sources List -->
+                    <div class="sources-section">
+                        <h2>Content Sources</h2>
+                        <div id="sources-list" class="sources-list">
+                            <!-- Sources will be displayed here -->
+                        </div>
+                        <div id="sources-empty" class="sources-empty">
+                            <p>No sources added yet. Add a source above to get started.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Infographic Generation -->
+                    <div class="generate-section">
+                        <h2>Generate Infographic</h2>
+                        <button id="generate-btn" class="btn btn-primary btn-large" disabled>
+                            <span class="icon">✨</span>
+                            Generate Infographic
+                        </button>
+                    </div>
+                    
+                    <!-- Infographic Display -->
+                    <div id="infographic-section" class="infographic-section" style="display: none;">
+                        <h2>Your Infographic</h2>
+                        <div id="infographic-display" class="infographic-display">
+                            <!-- Generated infographic will be displayed here -->
+                        </div>
+                        <button id="download-btn" class="btn btn-success btn-large">
+                            <span class="icon">⬇️</span>
+                            Download Infographic
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="db.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
